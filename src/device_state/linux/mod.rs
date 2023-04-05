@@ -10,6 +10,8 @@ use std::sync::Arc;
 
 mod kernel_key;
 
+pub mod query_dev;
+
 #[derive(Debug, Clone)]
 /// Device state descriptor.
 pub struct DeviceState {

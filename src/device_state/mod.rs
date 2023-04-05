@@ -2,8 +2,12 @@
 
 #[cfg(target_os = "linux")]
 mod linux;
+
 #[cfg(target_os = "linux")]
 pub use self::linux::DeviceState;
+
+#[cfg(target_os = "linux")]
+pub use self::linux::query_dev;
 
 #[cfg(target_os = "windows")]
 mod windows;
