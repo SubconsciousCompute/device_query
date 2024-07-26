@@ -13,7 +13,7 @@ impl DeviceState {
         Self {}
     }
 
-    // Adding because Linux and OSX supports this where `new` can panic. 
+    // Adding because Linux and OSX supports this where `new` can panic.
     pub fn checked_new() -> Option<Self> {
         Some(Self::new())
     }
@@ -88,6 +88,14 @@ impl DeviceState {
             KeyboardAndMouse::VK_F10 => Some(Keycode::F10),
             KeyboardAndMouse::VK_F11 => Some(Keycode::F11),
             KeyboardAndMouse::VK_F12 => Some(Keycode::F12),
+            KeyboardAndMouse::VK_F13 => Some(Keycode::F13),
+            KeyboardAndMouse::VK_F14 => Some(Keycode::F14),
+            KeyboardAndMouse::VK_F15 => Some(Keycode::F15),
+            KeyboardAndMouse::VK_F16 => Some(Keycode::F16),
+            KeyboardAndMouse::VK_F17 => Some(Keycode::F17),
+            KeyboardAndMouse::VK_F18 => Some(Keycode::F18),
+            KeyboardAndMouse::VK_F19 => Some(Keycode::F19),
+            KeyboardAndMouse::VK_F20 => Some(Keycode::F20),
             KeyboardAndMouse::VK_NUMPAD0 => Some(Keycode::Numpad0),
             KeyboardAndMouse::VK_NUMPAD1 => Some(Keycode::Numpad1),
             KeyboardAndMouse::VK_NUMPAD2 => Some(Keycode::Numpad2),
@@ -102,6 +110,8 @@ impl DeviceState {
             KeyboardAndMouse::VK_SUBTRACT => Some(Keycode::NumpadSubtract),
             KeyboardAndMouse::VK_DIVIDE => Some(Keycode::NumpadDivide),
             KeyboardAndMouse::VK_MULTIPLY => Some(Keycode::NumpadMultiply),
+            KeyboardAndMouse::VK_OEM_NEC_EQUAL => Some(Keycode::NumpadEquals),
+            KeyboardAndMouse::VK_DECIMAL => Some(Keycode::NumpadDecimal),
             KeyboardAndMouse::VK_SPACE => Some(Keycode::Space),
             KeyboardAndMouse::VK_LCONTROL => Some(Keycode::LControl),
             KeyboardAndMouse::VK_RCONTROL => Some(Keycode::RControl),
@@ -109,8 +119,8 @@ impl DeviceState {
             KeyboardAndMouse::VK_RSHIFT => Some(Keycode::RShift),
             KeyboardAndMouse::VK_LMENU => Some(Keycode::LAlt),
             KeyboardAndMouse::VK_RMENU => Some(Keycode::RAlt),
-            KeyboardAndMouse::VK_LWIN => Some(Keycode::Meta),
-            KeyboardAndMouse::VK_RWIN => Some(Keycode::Meta),
+            KeyboardAndMouse::VK_LWIN => Some(Keycode::LMeta),
+            KeyboardAndMouse::VK_RWIN => Some(Keycode::RMeta),
             KeyboardAndMouse::VK_RETURN => Some(Keycode::Enter),
             KeyboardAndMouse::VK_ESCAPE => Some(Keycode::Escape),
             KeyboardAndMouse::VK_UP => Some(Keycode::Up),

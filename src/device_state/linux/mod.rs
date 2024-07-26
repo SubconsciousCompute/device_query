@@ -5,15 +5,15 @@ use keymap::Keycode;
 use mouse_state::MouseState;
 use std::os::raw::c_char;
 use std::ptr;
+use std::rc::Rc;
 use std::slice;
-use std::sync::Arc;
 
 mod kernel_key;
 
 #[derive(Debug, Clone)]
 /// Device state descriptor.
 pub struct DeviceState {
-    xc: Arc<X11Connection>,
+    xc: Rc<X11Connection>,
 }
 
 #[derive(Debug)]
@@ -38,7 +38,7 @@ impl DeviceState {
                 panic!("Could not connect to a X display");
             }
             DeviceState {
-                xc: Arc::new(X11Connection { display }),
+                xc: Rc::new(X11Connection { display }),
             }
         }
     }
@@ -52,7 +52,7 @@ impl DeviceState {
                 return None;
             }
             Some(DeviceState {
-                xc: Arc::new(X11Connection { display }),
+                xc: Rc::new(X11Connection { display }),
             })
         }
     }
@@ -176,6 +176,14 @@ impl DeviceState {
             kernel_key::KEY_F10 => Some(Keycode::F10),
             kernel_key::KEY_F11 => Some(Keycode::F11),
             kernel_key::KEY_F12 => Some(Keycode::F12),
+            kernel_key::KEY_F13 => Some(Keycode::F13),
+            kernel_key::KEY_F14 => Some(Keycode::F14),
+            kernel_key::KEY_F15 => Some(Keycode::F15),
+            kernel_key::KEY_F16 => Some(Keycode::F16),
+            kernel_key::KEY_F17 => Some(Keycode::F17),
+            kernel_key::KEY_F18 => Some(Keycode::F18),
+            kernel_key::KEY_F19 => Some(Keycode::F19),
+            kernel_key::KEY_F20 => Some(Keycode::F20),
             kernel_key::KEY_KP0 => Some(Keycode::Numpad0),
             kernel_key::KEY_KP1 => Some(Keycode::Numpad1),
             kernel_key::KEY_KP2 => Some(Keycode::Numpad2),
@@ -186,11 +194,13 @@ impl DeviceState {
             kernel_key::KEY_KP7 => Some(Keycode::Numpad7),
             kernel_key::KEY_KP8 => Some(Keycode::Numpad8),
             kernel_key::KEY_KP9 => Some(Keycode::Numpad9),
-            kernel_key::KEY_KPENTER => Some(Keycode::Enter),
+            kernel_key::KEY_KPENTER => Some(Keycode::NumpadEnter),
             kernel_key::KEY_KPMINUS => Some(Keycode::NumpadSubtract),
             kernel_key::KEY_KPPLUS => Some(Keycode::NumpadAdd),
             kernel_key::KEY_KPSLASH => Some(Keycode::NumpadDivide),
             kernel_key::KEY_KPASTERISK => Some(Keycode::NumpadMultiply),
+            kernel_key::KEY_KPEQUAL => Some(Keycode::NumpadEquals),
+            kernel_key::KEY_KPDOT => Some(Keycode::NumpadDecimal),
             kernel_key::KEY_ESC => Some(Keycode::Escape),
             kernel_key::KEY_SPACE => Some(Keycode::Space),
             kernel_key::KEY_LEFTCTRL => Some(Keycode::LControl),
@@ -199,8 +209,8 @@ impl DeviceState {
             kernel_key::KEY_RIGHTSHIFT => Some(Keycode::RShift),
             kernel_key::KEY_LEFTALT => Some(Keycode::LAlt),
             kernel_key::KEY_RIGHTALT => Some(Keycode::RAlt),
-            kernel_key::KEY_LEFTMETA => Some(Keycode::Meta),
-            kernel_key::KEY_RIGHTMETA => Some(Keycode::Meta),
+            kernel_key::KEY_LEFTMETA => Some(Keycode::LMeta),
+            kernel_key::KEY_RIGHTMETA => Some(Keycode::RMeta),
             kernel_key::KEY_ENTER => Some(Keycode::Enter),
             kernel_key::KEY_UP => Some(Keycode::Up),
             kernel_key::KEY_DOWN => Some(Keycode::Down),
